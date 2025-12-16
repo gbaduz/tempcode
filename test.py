@@ -1,6 +1,18 @@
 #!/usr/bin/env python3
-"""Temporary test script."""
+"""Simple FastAPI app that returns a greeting."""
+
+from fastapi import FastAPI
+
+
+app = FastAPI()
+
+
+@app.get("/")
+def read_root():
+    return {"message": "hello"}
+
 
 if __name__ == "__main__":
-    print("Test script placeholder")
+    import uvicorn
 
+    uvicorn.run(app, host="0.0.0.0", port=8000)
